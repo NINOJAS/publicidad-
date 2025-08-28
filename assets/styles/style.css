@@ -1,0 +1,312 @@
+/* ========== VARIABLES ========== */
+:root{
+  --nav-bg: #0b9aa0;
+  --nav-height: 72px;
+  --max-width: 1200px;
+  --nav-padding: 8px;     /* controla cuánto espacio desde el borde para el logo */
+  --logo-width: 70px;      /* ancho del logo */
+  --menu-gap: 48px;        /* espacio entre los enlaces del menú */
+  --text-color: #000000;
+  --menu-hover-color: #ffffff;
+  --footer-bg: #0b9aa0;
+  --footer-text: #ffffff;
+  --color-primary: #00838f;
+  --color-secondary: #65dbe6;
+  --color-bg: #f9f9f9;
+  --color-text: #333;
+  --radius: 10px;
+
+/* ========== RESET / BASE ========== */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background-color: #d9f2f5;
+  color: var(--text-color);
+}
+
+html, body {
+  height: 100%;                /* que el body ocupe toda la altura de la ventana */
+  display: flex;               /* convertimos body en flex container */
+  flex-direction: column;      /* apilar en columna: header → main → footer */
+}
+
+main {
+  flex: 1;                     /* ocupa todo el espacio disponible y empuja el footer hacia abajo */
+}
+
+/* ========== NAV ========== */
+.nav{
+  background-color: var(--nav-bg);
+  position: relative;                 /* necesario para posicionar el logo absoluto dentro */
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.nav-inner{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: right;            /* centra el menú horizontalmente */
+  padding: 0 var(--nav-padding);
+  position: relative;
+}
+
+/* logo: lo colocamos absoluto a la izquierda dentro del nav-inner */
+.brand{
+  position: absolute;
+  left: var(--nav-padding);
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+.logo{
+  width: var(--logo-width);
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* menú: lista horizontal centrada */
+.menu{
+  list-style: none;
+  display: flex;
+  gap: var(--menu-gap);
+  align-items: right;
+  margin: 0;
+  padding: 0;
+}
+.menu li a{
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px 2px;
+}
+.menu li a:hover,
+.menu li a:focus{
+  color: var(--menu-hover-color);
+  text-decoration: underline;
+  transition: color .2s ease;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  padding: 3rem 1rem;
+  background: var(--color-secondary);
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-text {
+      
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #2d2c2c;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #006f75;
+}
+
+.hero-img img {
+  max-width: 50%;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Estilo para la imagen creativa */
+.imagen-creativa {
+    width: 50%;
+    height: auto;
+    border-radius: 18px;
+    border: 3px solid #4cafaf; /* marco verde vibrante */
+    box-shadow: 0 6px 20px rgba(12, 55, 53, 0.95); /* sombra con tono verde */
+    display: block;
+    margin: 25px auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.imagen-creativa:hover {
+    transform: scale(1.08) rotate(-1deg); /* efecto zoom + leve inclinación */
+    filter: brightness(1.1); /* la imagen se ve más viva */
+}
+
+/* Testimonial */
+.testimonial {
+  padding: 3rem 1rem;
+  background: linear-gradient(to right, #00bcd4, #b2dfdb);
+  text-align: center;
+}
+
+.testimonial-container p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.testimonial-author img {
+   width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Blog */
+.blog {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.blog .intro {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+  text-align: left;
+  flex: 1;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.avatar {
+  width: 2%;
+  height: 2%;
+  border-radius: 50%;
+}
+
+
+/* ========== FOOTER ========== */
+.site-footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 18px 0;
+}
+.footer-inner{
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--nav-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+.site-footer a{
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.95;
+}
+.site-footer a:hover{ text-decoration: underline; opacity: 1; }
+.sep{ margin: 0 8px; opacity: 0.6; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px){
+  :root{ --menu-gap: 28px; } /* menos espacio entre links en tablets */
+}
+@media (max-width: 700px){
+  .nav-inner{
+    justify-content: center;
+    padding: 10px 12px;
+    height: auto;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* logo pequeño y aún a la izquierda del área visible */
+  .brand{ left: 12px; top: 12px; transform: none; }
+
+  /* menú vertical y centrado en móviles */
+  .menu{
+    width: 100%;
+    justify-content: right;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .menu li a{ font-size: 0.95rem; padding: 8px 12px; }
+  .footer-inner{ flex-direction: column; text-align: center; gap: 8px; }
+}
+}
