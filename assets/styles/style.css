@@ -114,6 +114,7 @@ main {
 .hero-text {
       
   flex: 1;
+  text-align: center; 
 }
 
 .hero-text h1 {
@@ -125,6 +126,7 @@ main {
 .hero-text p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
+  text-align: center;
   color: #2d2c2c;
 }
 
@@ -178,16 +180,18 @@ main {
 
 .testimonial-author {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
 
-.testimonial-author img {
-   width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: block;
+.testimonial-img {
+  width: 20%;
+  height: 20%;
+  border-radius: 5%;
+  object-fit: cover;
+  gap: 1.5rem;
 }
 
 /* Blog */
@@ -247,10 +251,11 @@ main {
   padding-top: 1rem;
 }
 
-.avatar {
-  width: 2%;
-  height: 2%;
+.card-footer .avatar {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 
