@@ -4,7 +4,7 @@
   --nav-height: 72px;
   --max-width: 1200px;
   --nav-padding: 8px;     /* controla cuánto espacio desde el borde para el logo */
-  --logo-width: 70px;      /* ancho del logo */
+/*  --logo-width: 70px;      /* ancho del logo */
   --menu-gap: 48px;        /* espacio entre los enlaces del menú */
   --text-color: #000000;
   --menu-hover-color: #ffffff;
@@ -15,6 +15,8 @@
   --color-bg: #f9f9f9;
   --color-text: #333;
   --radius: 10px;
+}
+
 
 /* ========== RESET / BASE ========== */
 *{
@@ -65,11 +67,9 @@ main {
   transform: translateY(-50%);
   display: inline-block;
 }
-.logo{
-  width: var(--logo-width);
+.logo {
+  width: clamp(40px, 12vw, 70px); /* mínimo 40px, máximo 70px */
   height: auto;
-  display: block;
-  cursor: pointer;
 }
 
 /* menú: lista horizontal centrada */
@@ -98,7 +98,8 @@ main {
 
 /* Hero */
 .hero {
-  padding: 3rem 1rem;
+  margin-top: 2rem;
+  padding: 6rem 1rem;
   background: var(--color-secondary);
 }
 
@@ -111,8 +112,7 @@ main {
   gap: 2rem;
 }
 
-.hero-text {
-      
+.hero-text {   
   flex: 1;
   text-align: center; 
 }
@@ -128,6 +128,7 @@ main {
   margin-bottom: 1.5rem;
   text-align: center;
   color: #2d2c2c;
+  line-height: 1.6;
 }
 
 .btn {
@@ -151,6 +152,7 @@ main {
 
 /* Estilo para la imagen creativa */
 .imagen-creativa {
+    max-width: 400px;
     width: 50%;
     height: auto;
     border-radius: 18px;
@@ -196,7 +198,7 @@ main {
 
 /* Blog */
 .blog {
-  padding: 3rem 1rem;
+  padding: 6rem 1rem;
   max-width: 1200px;
   margin: auto;
   text-align: center;
@@ -205,6 +207,7 @@ main {
 .blog .intro {
   margin-bottom: 2rem;
   color: #555;
+  line-height: 1.6;
 }
 
 .blog-grid {
@@ -229,9 +232,10 @@ main {
 }
 
 .card-content {
-  padding: 1rem;
+  padding: 3rem;
   text-align: left;
   flex: 1;
+  line-height: 1.6;
 }
 
 .tag {
@@ -257,6 +261,67 @@ main {
   border-radius: 50%;
   object-fit: cover;
 }
+
+
+/*---------- MISSION SECTION ========== */
+.mission-section {
+  padding: 6rem 1rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.mission-section h2 {
+  margin-bottom: 2rem;
+  text-align: center; /* Mantenemos el título centrado */
+  color: var(--color-primary);
+}
+
+/* Nuevo contenedor para el contenido */
+.mission-content {
+  display: flex;
+  flex-direction: row; /* Ahora texto a la izquierda e imagen a la derecha */
+  align-items: center; /* Centra verticalmente */
+  justify-content: space-between; /* Espacio equilibrado */
+  gap: 3rem; /* Menor separación, más armónico */
+  flex-wrap: wrap; /* Para que en pantallas pequeñas se acomoden */
+}
+
+
+.mission-text {
+  flex: 1; /* Permite que el texto ocupe el espacio disponible */
+  max-width: 50%; /* Opcional: limita el ancho del texto */
+   text-align: center; /* Alinea el texto a la izquierda */
+}
+
+.mission-text p {  
+  font-size: 1.25rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.mission-img {
+  flex: 1;
+  max-width: 50%;            /* nunca ocupa más de la mitad */
+  display: flex;
+  justify-content: center;    /* centra la imagen dentro del bloque */
+  align-items: center;
+}
+
+.mission-img img {
+  max-width: 100%;           /* nunca se sale del contenedor */
+  height: auto;              /* mantiene proporción */
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  border: #006f75 solid 3px;
+  object-fit: cover;         /* recorta si hace falta */
+}
+
+/* Inversión del orden de los elementos dentro de un contenedor flex */
+.layout-reverse {
+  flex-direction: row-reverse;
+}
+
+
 
 
 /* ========== FOOTER ========== */
@@ -291,6 +356,14 @@ main {
 @media (max-width: 900px){
   :root{ --menu-gap: 28px; } /* menos espacio entre links en tablets */
 }
+
+@media (min-width: 1024px) {
+  .hero {
+    margin-top: 4rem;
+    padding-top: 8rem; /* más espacio arriba */
+  }
+}
+
 @media (max-width: 700px){
   .nav-inner{
     justify-content: center;
@@ -310,8 +383,31 @@ main {
     gap: 16px;
     flex-wrap: wrap;
   }
-
-  .menu li a{ font-size: 0.95rem; padding: 8px 12px; }
   .footer-inner{ flex-direction: column; text-align: center; gap: 8px; }
 }
+  
+  @media (min-width: 1024px) {
+    .imagen-creativa {
+      max-width: 500px; /* la hacemos más grande en desktop */
+    }
+  }    
+  
+ @media (max-width: 768px) {
+  .mission-content {
+    flex-direction: column; /* En móviles se apilan */
+    text-align: center;
+  }
+
+  .mission-text, .mission-img {
+    max-width: 100%; /* Ocupan todo el ancho */
+  }
+  
+  .mission-text {
+    text-align: center;
+  }
+  
+ .mission-text {
+    text-align: center;
+  }  
+
 }
