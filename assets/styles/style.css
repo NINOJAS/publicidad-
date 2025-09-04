@@ -224,7 +224,17 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  gap: 3rem;
 }
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
 
 .card img {
   width: 100%;
@@ -322,7 +332,13 @@ main {
   flex-direction: row-reverse;
 }
 
-
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 0 2rem 3rem 2rem;
+  padding: 0 1rem 2rem 1rem;
+  gap: 2rem;
+}
 
 
 /* ========== FOOTER ========== */
@@ -391,37 +407,6 @@ main {
     flex-wrap: wrap;
   }
 
-  /* HERO */
-  .hero-container {
-    flex-direction: column;  /* texto arriba, imagen abajo */
-    text-align: center;
-  }
-  .hero-text {
-    order: 1;
-  }
-  .hero-img {
-    order: 2;
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  .hero-img img {
-    max-width: 80%;
-  }
-
-  /* MISSION */
-  .mission-content {
-    flex-direction: column;
-    text-align: center;
-  }
-  .mission-text, 
-  .mission-img {
-    max-width: 100%;
-  }
-  .mission-text {
-    text-align: center;
-  }
-
   /* FOOTER */
   .footer-inner{ 
     flex-direction: column; 
@@ -430,4 +415,21 @@ main {
   }
 }
  
+
+@media (min-width: 768px) {
+  .grid-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  
+  .grid-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Títulos */
+
+
  
