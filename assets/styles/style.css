@@ -116,6 +116,7 @@ main {
 .hero-text {   
   flex: 1;
   text-align: center; 
+  justify-content: center;
 }
 
 .hero-text h1 {
@@ -145,11 +146,20 @@ main {
   background: #006f75;
 }
 
-.hero-img img {
-  max-width: 50%;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-}
+  .hero-img {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* centra la imagen */
+    align-items: center;
+  }
+
+  .hero-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius, 12px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    object-fit: cover;
+  }
 
 /* Estilo para la imagen creativa */
 .imagen-creativa {
@@ -290,7 +300,6 @@ main {
 /* Nuevo contenedor para el contenido */
 .mission-content {
   display: flex;
-  flex-direction: row; /* Ahora texto a la izquierda e imagen a la derecha */
   align-items: center; /* Centra verticalmente */
   justify-content: space-between; /* Espacio equilibrado */
   gap: 3rem; /* Menor separación, más armónico */
@@ -300,8 +309,7 @@ main {
 
 .mission-text {
   flex: 1; /* Permite que el texto ocupe el espacio disponible */
-  max-width: 50%; /* Opcional: limita el ancho del texto */
-   text-align: center; /* Alinea el texto a la izquierda */
+  text-align: center; /* Alinea el texto a la izquierda */
 }
 
 .mission-text p {  
@@ -311,10 +319,9 @@ main {
 }
 
 .mission-img {
-  flex: 1;
-  max-width: 50%;            /* nunca ocupa más de la mitad */
+  flex: 1;           
   display: flex;
-  justify-content: center;    /* centra la imagen dentro del bloque */
+  justify-content: center;    
   align-items: center;
 }
 
@@ -322,8 +329,8 @@ main {
   max-width: 100%;           /* nunca se sale del contenedor */
   height: auto;              /* mantiene proporción */
   border-radius: var(--radius);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  border: #006f75 solid 3px;
+  box-shadow: 0 4px 6px var(--color-primary);
+  border: var(--color-primary) solid 3px;
   object-fit: cover;         /* recorta si hace falta */
 }
 
@@ -340,6 +347,56 @@ main {
   gap: 2rem;
 }
 
+.team {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.team h2 {
+  font-size: 2rem;
+  color: var(--color-primary); /* Verde oscuro */
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.member {
+  max-width: 220px;
+}
+
+.member img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.member h3 {
+  font-size: 1.1rem;
+  color: var(--color-primary); 
+  margin: 0;
+  
+}
+
+.member .rol {
+  font-style: italic;
+  color: #777;
+  margin-top: 5px;
+  margin: 0 2rem 3rem 2rem
+}
 
 /* ========== FOOTER ========== */
 .site-footer{
@@ -376,17 +433,58 @@ main {
   :root{ --menu-gap: 28px; }
 }
 
-/* Desktop grande */
-@media (min-width: 1024px) {
-  .hero {
-    margin-top: 4rem;
-    padding-top: 8rem; /* más espacio arriba */
+/*  Móviles */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;       /* apila en columna */
+    text-align: center;
+    gap: 2rem;
   }
 
+  .hero-text {
+    order: 1;                     /* texto primero */
+  }
+
+  .hero-img {
+    order: 2;                     /* imagen después */
+    width: 100%;                  /* ocupa ancho completo */
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-img img {
+    max-width: 90%;               /* se adapta al ancho de la pantalla */
+    height: auto;                 /* mantiene proporción */
+  }
+}
+
+/*  Tablets y escritorio */
+@media (min-width: 769px) {
+  .hero-container {
+    flex-direction: row;          /* texto e imagen lado a lado */
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero-text {
+    flex: 1;
+    text-align: center;
+  }
+
+  .hero-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-img img {
+    max-width: 100%;              /* la imagen nunca se desborda */
+    height: auto;
+  }
+}
   .imagen-creativa {
     max-width: 500px; /* imagen más grande en desktop */
   }
-}
 
 /* ====== Celulares ====== */
 @media (max-width: 768px) {
@@ -406,6 +504,25 @@ main {
     gap: 16px;
     flex-wrap: wrap;
   }
+ 
+  @media (max-width: 768px) {
+  .mission {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mission-text {
+    order: 1; /* Texto primero */
+  }
+
+  .mission-img {
+    order: 2; /* Imagen después */
+  }
+
+  .mission-img img {
+    max-width: 300px; /* límite opcional */
+  }
+}
 
   /* FOOTER */
   .footer-inner{ 
@@ -429,7 +546,7 @@ main {
   }
 }
 
-/* Títulos */
+
 
 
  
